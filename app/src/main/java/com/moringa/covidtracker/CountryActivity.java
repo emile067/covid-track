@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 public class CountryActivity extends AppCompatActivity {
 
+    //This activity is to be implemented in the future
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +18,7 @@ public class CountryActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Covid Stats");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //getting the user input from previous activities
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
         String welcomeText= "Welcome to TrackCovid " + userName;

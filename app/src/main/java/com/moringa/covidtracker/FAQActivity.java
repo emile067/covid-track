@@ -19,6 +19,7 @@ public class FAQActivity extends AppCompatActivity {
     @BindView(R.id.lessCommonSymptomslistView) ListView mLessCommonSymptomslistView;
     @BindView(R.id.seriousSymptomslistView) ListView mSeriousSymptomslistView;
     @BindView(R.id.preventionListView) ListView mPreventionListView;
+    // Arrays for the content on FAQ activity
     private final String[] mostCommonSymptoms = new String[] {"fever", "dry cough", "tiredness"};
     private final String[] lessCommonSymptoms = new String[] {"aches and pains", "sore throat", "diarrhoea","conjunctivitis","headache","loss of taste or smell","a rash on skin, or discolouration of fingers or toes"};
     private final String[] seriousSymptoms = new String[] {"difficulty breathing or shortness of breath","chest pain or pressure", "loss of speech or movement"};
@@ -30,8 +31,7 @@ public class FAQActivity extends AppCompatActivity {
             "Stay home if you feel unwell.",
             "If you have a fever, cough and difficulty breathing, seek medical attention."};
 
-    Intent intent = getIntent();
-    String userName = intent.getStringExtra("userName");
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +39,16 @@ public class FAQActivity extends AppCompatActivity {
         setContentView(R.layout.activity_f_a_q);
         ButterKnife.bind(this);
 
-        getSupportActionBar().setTitle("FAQ");
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
+
+        //Validation of the input on the menu bar
+        getSupportActionBar().setTitle("Welcome " + userName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String welcomeText= "Welcome to TrackCovid " + userName;
         Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
+        //Creating array adapters for passing the different arrays to the layouts
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mostCommonSymptoms);
         mMostCommonSymptomslistView.setAdapter(adapter);
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lessCommonSymptoms);
@@ -54,6 +59,7 @@ public class FAQActivity extends AppCompatActivity {
         mPreventionListView.setAdapter(adapter4);
     }
 
+    //adding the additional menu to the menu bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -61,6 +67,7 @@ public class FAQActivity extends AppCompatActivity {
         return true;
     }
 
+    //setting up functions for the menu bar items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

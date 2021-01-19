@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //Onclick function for navigating to the next activity
         mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //adding the additional menu to the menu bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //setting up functions for the menu bar items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
